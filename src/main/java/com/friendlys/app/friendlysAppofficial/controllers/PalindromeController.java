@@ -14,7 +14,7 @@ public class PalindromeController {
     /**
      * Endpoint para verificar si una palabra es palindromo.
      * @param word La palabra a verificar.
-     * @return Un mensaje indicandono si la palabra es un palindromo o no.
+     * @return Un mensaje indicandonos si la palabra es un palindromo o no.
      */
 
     @GetMapping("/validar-palindromo/{word}")
