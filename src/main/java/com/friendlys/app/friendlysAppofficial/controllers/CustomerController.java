@@ -53,4 +53,16 @@ public class CustomerController {
         return null; //Es mala practica se utiliza Manejo de excepciones
     }
 
+    @DeleteMapping("/clientes{id}")
+    public Customer deleteCliente(@PathVariable int id){ ;
+        for (Customer c : customers) {
+            if (c.getID() == id) {
+                customers.remove(c);
+
+                return c;
+            }
+        }
+        return null;
+    }
+
 }
