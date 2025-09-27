@@ -65,4 +65,26 @@ public class CustomerController {
         return null;
     }
 
+    @PatchMapping("/clientes")
+    public Customer pathCliente(@RequestBody Customer customer){
+        for(Customer c : customers){
+            if(c.getID() == customer.getID()){
+
+                if(customer.getName() != null){
+                    c.setName(customer.getName());
+                }
+                if (customer.getUsername() != null){
+                    c.setUsername(customer.getUsername());
+
+                }
+                if(customer.getPassword() != null){
+                    c.setPassword(customer.getPassword());
+
+                }
+                return c;
+            }
+        }
+        return null;
+    }
+
 }
