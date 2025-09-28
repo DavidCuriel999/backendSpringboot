@@ -4,11 +4,12 @@ import com.friendlys.app.friendlysAppofficial.domain.Customer;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 import java.util.List;
 
 
 @RestController
+@RequestMapping("/clientes")
 // Solo simulamos una base de datos No es practico
 public class CustomerController {
 
@@ -19,12 +20,12 @@ public class CustomerController {
             new Customer(234,"Carlos Martinez", "carlosm", "password234")
     ));
 
-    @GetMapping("/clientes")
+    @GetMapping
     public List<Customer> getCustomers() {
         return customers;
     }
 
-    @GetMapping("/clientes/{username}")
+    @GetMapping("/{username}")
     public Customer getCliente(@PathVariable String username){
         for (Customer c : customers) {
             if(c.getUsername().equalsIgnoreCase(username)) {
@@ -34,13 +35,13 @@ public class CustomerController {
         return null; // Mala practica
 
     }
-    @PostMapping("/clientes")
+    @PostMapping
     public Customer postCliente(@RequestBody Customer customer){
         customers.add(customer);
         return customer;
     }
 
-    @PutMapping("/clientes")
+    @PutMapping
     public Customer putCliente(@RequestBody Customer customer) {
         for (Customer c : customers) {
             if (c.getID() == customer.getID()) {
@@ -53,7 +54,7 @@ public class CustomerController {
         return null; //Es mala practica se utiliza Manejo de excepciones
     }
 
-    @DeleteMapping("/clientes{id}")
+    @DeleteMapping("/{id}")
     public Customer deleteCliente(@PathVariable int id){ ;
         for (Customer c : customers) {
             if (c.getID() == id) {
@@ -65,8 +66,8 @@ public class CustomerController {
         return null;
     }
 
-    @PatchMapping("/clientes")
-    public Customer pathCliente(@RequestBody Customer customer){
+    @PatchMapping
+    public Customer patchCliente(@RequestBody Customer customer){
         for(Customer c : customers){
             if(c.getID() == customer.getID()){
 
