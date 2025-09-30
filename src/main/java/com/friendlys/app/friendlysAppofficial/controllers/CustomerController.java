@@ -20,12 +20,15 @@ public class CustomerController {
             new Customer(234,"Carlos Martinez", "carlosm", "password234")
     ));
 
-    @GetMapping
+    @RequestMapping(method = RequestMethod.GET)
+    //@GetMapping
     public List<Customer> getCustomers() {
+
         return customers;
     }
 
-    @GetMapping("/{username}")
+    @RequestMapping(value = "/{username}", method = RequestMethod.GET)
+    //@GetMapping("/{username}")
     public Customer getCliente(@PathVariable String username){
         for (Customer c : customers) {
             if(c.getUsername().equalsIgnoreCase(username)) {
@@ -35,13 +38,15 @@ public class CustomerController {
         return null; // Mala practica
 
     }
-    @PostMapping
+    @RequestMapping(method = RequestMethod.POST)
+    //@PostMapping
     public Customer postCliente(@RequestBody Customer customer){
         customers.add(customer);
         return customer;
     }
 
-    @PutMapping
+    @RequestMapping(method = RequestMethod.PUT)
+    //@PutMapping
     public Customer putCliente(@RequestBody Customer customer) {
         for (Customer c : customers) {
             if (c.getID() == customer.getID()) {
@@ -54,7 +59,8 @@ public class CustomerController {
         return null; //Es mala practica se utiliza Manejo de excepciones
     }
 
-    @DeleteMapping("/{id}")
+    @RequestMapping(value= "/{id}", method =RequestMethod.DELETE)
+    //@DeleteMapping("/{id}")
     public Customer deleteCliente(@PathVariable int id){ ;
         for (Customer c : customers) {
             if (c.getID() == id) {
@@ -66,7 +72,8 @@ public class CustomerController {
         return null;
     }
 
-    @PatchMapping
+    @RequestMapping(method = RequestMethod.PATCH)
+    //@PatchMapping
     public Customer patchCliente(@RequestBody Customer customer){
         for(Customer c : customers){
             if(c.getID() == customer.getID()){
