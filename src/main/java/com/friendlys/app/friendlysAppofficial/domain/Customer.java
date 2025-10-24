@@ -1,8 +1,14 @@
 package com.friendlys.app.friendlysAppofficial.domain;
 //Clase POJO
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Customer {
     //atributos
+
     private int ID;
 
     private String name;
@@ -10,7 +16,6 @@ public class Customer {
     private String username;
 
     private String password;
-
 
     //Constructor
     public Customer(int ID, String name, String username, String password) {
@@ -20,35 +25,5 @@ public class Customer {
         this.password = password;
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    
 }
